@@ -103,6 +103,8 @@ class TestClamsApp(unittest.TestCase):
         self.assertEqual(clams.appmetadata.generate_app_version(cwd='not-existing-app'), 'v10')
         os.environ.pop(clams.appmetadata.app_version_envvar_key, None)
         # the version in development should be greater than the version in the last release
+        print(clams.__version__)
+        print(clams.appmetadata.generate_app_version(cwd=Path(__file__).parent / '..').split('-')[0])
         self.assertTrue(clams.__version__ >=
                         clams.appmetadata.generate_app_version(cwd=Path(__file__).parent/'..').split('-')[0])
 

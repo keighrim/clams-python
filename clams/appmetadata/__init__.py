@@ -44,6 +44,7 @@ def generate_app_version(cwd=None):
             shell=True,
             check=True,
         )
+        print(proc.stdout, gitcmd, gitdir)
         return proc.stdout.decode('utf8').strip()
     elif app_version_envvar_key in os.environ:
         return os.environ[app_version_envvar_key]
