@@ -20,6 +20,12 @@ jobs:
       with:
         ref: ${{ env.VERSION }}
         fetch-depth: 0
+    - name: check clone stat
+      run: |
+        ls $(pwd) 
+        ls clams/develop/templates/github/*
+        python -c 'import setuptools ; print(setuptools.version.__version__)'
+
     - name: setup python
       uses: actions/setup-python@v4
       with:
@@ -28,4 +34,3 @@ jobs:
       run: |
         echo ${{ env.VERSION }} > VERSION
         make package
-        make test
